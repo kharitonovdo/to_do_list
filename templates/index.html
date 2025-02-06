@@ -1,19 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/path/to/favicon.ico">
     <title>Document</title>
 </head>
+<style>
+    .card {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+</style>
 <body>
-    <form action="/" method="POST">
-        <div>
-            <input name="text" id="text"/>
-            <button type="submit">Добавить</button>
-        </div>
-    </form>
+<form action="/" method="POST">
     <div>
-        {{ text }}
+        <input name="text" id="text"/>
+        <button type="submit">Добавить</button>
     </div>
+</form>
+<form action="/" method="POST" name="delete">
+    <div class="card">
+    <div style="text-align: center;">
+        {% for i in prod %}
+        {{ i[1] }}
+        {% if i[-1] == 1 %}
+        <a href="/galka/{{ i[0] }}/{{ 0 }}"><img src="https://cdn-icons-png.flaticon.com/128/14090/14090371.png" loading="lazy" alt="Проверять " title="Проверять " width="64" height="64"></a> <a href="/delete/{{ i[0] }}">{{ delete }} <img src="https://cdn-icons-png.flaticon.com/128/6932/6932392.png" loading="lazy" alt="Удалить " title="Удалить " width="64" height="64"></a><br>
+        {% else %}
+        <a href="/galka/{{ i[0] }}/{{ 1 }}"><img src="https://cdn-icons-png.flaticon.com/128/14035/14035689.png" loading="lazy" alt="Крест " title="Крест " width="64" height="64"></a> <a href="/delete/{{ i[0] }}">{{ delete }} <img src="https://cdn-icons-png.flaticon.com/128/6932/6932392.png" loading="lazy" alt="Удалить " title="Удалить " width="64" height="64"></a><br>
+        {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+</form>
 </body>
 </html>
